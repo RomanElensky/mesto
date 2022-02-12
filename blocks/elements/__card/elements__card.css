@@ -1,0 +1,16 @@
+.elements__card {
+    background-color: white;
+    border-radius: 10px;
+    width: 282px;
+    height: 361px;
+}
+
+@media screen and (max-width: 670px) {
+    .elements__card {
+        margin-bottom: 20px;
+    }
+
+    .elements__card:last-of-type {
+        margin-bottom: 0;
+    }
+}
