@@ -43,5 +43,5 @@ formElement.addEventListener('submit', formSubmitHandler);
 const likeButton = card.querySelector('.card__like');
 
 likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('card__like_clicked.css');
+    likeButton.classList.toggle('card__like_clicked');
 })
