@@ -40,8 +40,8 @@ function formSubmitHandler(evt) {
 
 formElement.addEventListener('submit', formSubmitHandler); 
 
-const likeButton = card.querySelector('.element__card-like');
+const likeButton = card.querySelector('.card__like');
 
 likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('element__like_clicked');
+    likeButton.classList.toggle('card__like_clicked.css');
 })
