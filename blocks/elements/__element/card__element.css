@@ -1,4 +1,4 @@
-.elements__card {
+.card__element {
     background-color: white;
     border-radius: 10px;
     width: 282px;
@@ -6,11 +6,11 @@
 }
 
 @media screen and (max-width: 670px) {
-    .elements__card {
+    .card__element {
         margin-bottom: 20px;
     }
 
-    .elements__card:last-of-type {
+    .card__element:last-of-type {
         margin-bottom: 0;
     }
 }
