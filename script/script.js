@@ -7,7 +7,7 @@ const inputName = document.querySelector('.popup__input-name');
 const inputInfo = document.querySelector('.popup__input-info');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
-const popupWindow = document.querySelector('.popup__edit-profile');
+const popupWindow = document.querySelector('.popup_type_edit-profile');
 const elements = document.querySelector('.card');
 const card = document.querySelector('.card__element');
 
