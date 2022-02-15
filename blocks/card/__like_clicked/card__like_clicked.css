@@ -1,4 +1,4 @@
-.element__like_clicked {
+.card__like_clicked {
     background-image: url(../../../images/like-clicked.svg);
     background-repeat: no-repeat;
     background-color: transparent;
@@ -10,7 +10,7 @@
     float: right;
 }
 
-.element__like:hover {
+.card__like:hover {
     transition-duration: 1s;
     opacity: 0.5;
 }
