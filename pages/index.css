@@ -19,7 +19,7 @@
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__name/card__name.css);
 @import url(../blocks/card/__like/card__like.css);
-@import url(../blocks/card/__like_clicked/card__like_clicked.css);
+@import url(../blocks/card/__like/_clicked/card__like_clicked.css);
 @import url(../blocks/card/__description/card__description.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/popup/popup.css);
