@@ -5,9 +5,17 @@
     max-width: 880px;
 }
 
+@media screen and (max-width: 900px) {
+    .profile {
+        margin: 0 auto;
+        padding-bottom: 51px;
+        width: 700px;
+    }
+}
+
 @media screen and (max-width: 670px) {
     .profile {
         flex-direction: column;
-        margin: 0 auto 36px;
+        width: 320px;
     }
 }

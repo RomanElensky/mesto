@@ -6,7 +6,6 @@
     line-height: 22px;
     color: #545454;
     width: 318px;
-    height: 18px;
     margin: 0 auto 60px 200px;
 }
 
@@ -15,7 +14,7 @@
         font-size: 14px;
         line-height: 17px;
         width: 282px;
-        height: 14px;
-        margin: 0 auto 36px 19px;
+        margin: 0 auto;
+        padding-bottom: 36px;
     }
 }

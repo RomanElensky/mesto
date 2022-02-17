@@ -10,19 +10,18 @@
     <div class="page">
         <header class="header">
           <img class="header__image" src="images/header-logo.svg" alt="Место">
-          <div class="header__line"></div>
         </header>
         <main class="main">
           <section class="profile">
             <img class="profile__image" src="images/profile_image.jpg" alt="Аватар">
             <div class="profile__title">
               <div class="profile__info">
-                <h2 class="profile__name">Жак-Ив Кусто</h2>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__description">Исследователь океана</p>
               </div>
-              <input type="image" class="profile__edit-button" src="images/Edit-Button.svg" alt="Кнопка 1">
+              <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
             </div>
-            <button class="profile__add-button" type="button"></button>
+            <button class="profile__add-button" type="button" aria-label="Добавить"></button>
           </section>
           <section class="card">
             <div class="card__element">
@@ -70,20 +69,20 @@
           </section>
         </main>
         <footer class="footer">
-          <p class="footer__text">© 2020 Mesto Russia</p>
+          <p class="footer__text">&copy; 2020 Mesto Russia</p>
         </footer>
       </div>
-      <div class="popup popup_type_edit-profile">
+      <section class="popup popup_type_edit-profile">
         <div class="popup__container">
-          <input type="image" class="popup__close-button" src="images/Close-Icon.svg" alt="Закрыть">
+          <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__input-container popup__form-info">
-            <input type="text" placeholder="Жак-Ив Кусто" class="popup__input popup__input-name">
-            <input type="text" placeholder="Исследователь океана" class="popup__input popup__input-info">
-            <button class="popup__submit-button" type="submit">Сохранить</button>
+          <form class="popup__input-container" name="form_edit-profile">
+            <input type="text" placeholder="Имя" class="popup__input popup_input-name" name="profile_name">
+            <input type="text" placeholder="Род деятельности" class="popup__input popup_input-info" name="profile_info">
+            <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
           </form>
         </div>
-    </div>
+      </section>
     <script src="script/script.js"></script>
 </body>
 </html>

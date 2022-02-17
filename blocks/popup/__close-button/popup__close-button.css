@@ -4,6 +4,10 @@
     right: -40px;
     width: 32px;
     height: 32px;
+    background-image: url(../../../images/Close-Icon.svg);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
 }
 
 .popup__close-button:hover {

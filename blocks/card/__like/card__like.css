@@ -6,7 +6,7 @@
     padding: 0;
     width: 22px;
     height: 19px;
-    margin: 30px 30px auto auto;
+    cursor: pointer;
 }
 
 .card__like:hover {
