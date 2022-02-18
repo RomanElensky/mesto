@@ -19,8 +19,8 @@ function closePopup() {
 
 function popupOpenForm() {
     openPopup(popupTypeEditProfile)
-    profileName.value = profileDescription.textContent;
     inputName.value = profileName.textContent;
+    inputInfo.value = profileDescription.textContent;
 }
 
 function formSubmitHandler(evt) {
@@ -31,5 +31,5 @@ function formSubmitHandler(evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
-profileEditButton.addEventListener('click', openPopup);
+profileEditButton.addEventListener('click', popupOpenForm);
 popupCloseButton.addEventListener('click', closePopup);
