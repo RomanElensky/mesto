@@ -7,7 +7,7 @@
     margin: 0 auto 67px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
     .card {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
