@@ -6,9 +6,7 @@ const inputName = document.querySelector('.popup__input_type_name');
 const inputInfo = document.querySelector('.popup__input_type_info');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
-const cards = document.querySelectorAll('.card__element');
 const cardSection = document.querySelector('.card');
-const trashButton = document.querySelector('.card__trash-button');
 const profileAddButton = document.querySelector('.profile__add-button');
 const popupEditProfile = document.querySelector('.popup__type_edit-profile');
 const popupAddCard = document.querySelector('.popup__type_add-card');
@@ -50,7 +48,7 @@ function popupOpenAddCard() {
 
 function formSubmitCard(evt) {
     evt.preventDefault();
-    createCard({name: inputCard.value, link: inputLink.value });
+    renderCard({name: inputCard.value, link: inputLink.value });
     closePopup(popupAddCard);
 }
 
@@ -70,15 +68,15 @@ function createCard(item) {
     viewImage.alt = item.name;
 
     // Like function
-    cards.forEach(function(cardElement) {
     const likeButton = cardElement.querySelector('.card__like');
-    
-    likeButton.addEventListener('click', () => {
-        likeButton.classList.toggle('card__like_clicked');
-      })
-    })
+    function clickedLikeButton(evt) {
+        evt.target.classList.toggle('.card__like_clicked');
+    }
+
+    likeButton.addEventListener('click', clickedLikeButton);
 
     // Remove cards function
+    const trashButton = document.querySelector('.card__trash-button');
     function deleteCard(evt) {
     evt.target.closest('.card__element').remove();
     }
