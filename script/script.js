@@ -17,6 +17,7 @@ const inputLink = document.querySelector('.popup__input_type_link');
 const popupOpenImage = document.querySelector('.popup__type_open-image');
 const popupImage = document.querySelector('.popup__image');
 const popupImageTitle = document.querySelector('.popup__image-title');
+const cardTemplate = document.querySelector('.card__template').content;
 
 
 // Open/Close popup
@@ -49,7 +50,7 @@ function popupOpenAddCard() {
 
 function formSubmitCard(evt) {
     evt.preventDefault();
-    createCard ({name: inputCard.value, link: inputLink.value });
+    createCard({name: inputCard.value, link: inputLink.value });
     closePopup(popupAddCard);
 }
 
@@ -60,42 +61,39 @@ popupCloseButton.forEach(function(item) {
     });
 });
 
-// Cards function
-
-function openCards() {
-    initialCards.forEach(createCard)
-}
-    
-function cardElement(item) {
-    const viewImage = cards.querySelector('.card__image');
-    cards.querySelector('.card__name').textContent = item.name;
+// Cards function  
+function createCard(item) {
+    const cardElement = cardTemplate.querySelector('.card__element').cloneNode(true);
+    const viewImage = cardElement.querySelector('.card__image');
+    cardElement.querySelector('.card__name').textContent = item.name;
     viewImage.src = item.link;
     viewImage.alt = item.name;
-}
 
-function createCard(item) {
-    const cards = cardElement(item);
-    cardSection.prepend(cards);
-}
-    
-// Like function
-cards.forEach(function(card) {
-    const likeButton = card.querySelector('.card__like');
+    // Like function
+    cards.forEach(function(cardElement) {
+    const likeButton = cardElement.querySelector('.card__like');
     
     likeButton.addEventListener('click', () => {
         likeButton.classList.toggle('card__like_clicked');
+      })
     })
-})
-    
-function createCard(item) {
-    const cards = cardElement(item);
-    cardSection.prepend(cards);
-}
-    
-// Remove cards function
-function deleteCard(evt) {
+
+    // Remove cards function
+    function deleteCard(evt) {
     evt.target.closest('.card__element').remove();
+    }
+
+    trashButton.addEventListener('click', deleteCard);
+
+    return cardElement;
 }
+
+function renderCard(item) {
+    const newCard = createCard(item)
+    cardSection.prepend(newCard);
+}
+
+initialCards.forEach(renderCard);
 
 // View images function
 function openImage(viewImage) {
@@ -108,4 +106,3 @@ function openImage(viewImage) {
 formElement.addEventListener('submit', formSubmitHandler);
 profileEditButton.addEventListener('click', popupOpenEditForm);
 profileAddButton.addEventListener('click', popupOpenAddCard);
-trashButton.addEventListener('click', deleteCard);

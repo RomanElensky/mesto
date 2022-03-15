@@ -119,7 +119,20 @@
           <figcaption class="popup__image-title"></figcaption>
         </figure>
       </section>
-    <script src="script/script.js"></script>
+      <template class="card__template">
+        #document-fragment
+        <div class="card__element">
+          <div class="card__image-container">
+            <img class="card__image" src="" alt="">
+            <button class="card__trash-button" type="button" aria-label="Удалить"></button>
+          </div>
+          <div class="card__description">
+            <h2 class="card__name"></h2>
+            <button class="card__like" type="button"></button>
+          </div>
+        </div>
+      </template>
     <script src="script/cards.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>
