@@ -48,7 +48,7 @@ function popupOpenAddCard() {
 
 function formSubmitCard(evt) {
     evt.preventDefault();
-    renderCard({name: inputCard.value, link: inputLink.value });
+    renderCard({ name: inputCard.value, link: inputLink.value });
     closePopup(popupAddCard);
 }
 
@@ -59,7 +59,11 @@ popupCloseButton.forEach(function(item) {
     });
 });
 
-// Cards function  
+// Cards function
+function newCards () {
+    initialCards.forEach(renderCard);
+}
+
 function createCard(item) {
     const cardElement = cardTemplate.querySelector('.card__element').cloneNode(true);
     const viewImage = cardElement.querySelector('.card__image');
@@ -68,30 +72,23 @@ function createCard(item) {
     viewImage.alt = item.name;
 
     // Like function
-    const likeButton = cardElement.querySelector('.card__like');
-    function clickedLikeButton(evt) {
-        evt.target.classList.toggle('.card__like_clicked');
-    }
-
-    likeButton.addEventListener('click', clickedLikeButton);
+    cardElement.querySelector('.card__like').addEventListener('click', (evt) => {
+        evt.target.classList.toggle("card__like_clicked")});
 
     // Remove cards function
-    const trashButton = document.querySelector('.card__trash-button');
-    function deleteCard(evt) {
-    evt.target.closest('.card__element').remove();
-    }
-
-    trashButton.addEventListener('click', deleteCard);
+    cardElement.querySelector('.card__trash-button').addEventListener('click', (evt) => {
+        evt.target.closest('.card__element').remove()});
+        
+    // View image
+        viewImage.addEventListener('click', () => openImage(viewImage));
 
     return cardElement;
 }
 
 function renderCard(item) {
-    const newCard = createCard(item)
-    cardSection.prepend(newCard);
+    const cardElement = createCard(item)
+    cardSection.prepend(cardElement);
 }
-
-initialCards.forEach(renderCard);
 
 // View images function
 function openImage(viewImage) {
@@ -104,3 +101,6 @@ function openImage(viewImage) {
 formElement.addEventListener('submit', formSubmitHandler);
 profileEditButton.addEventListener('click', popupOpenEditForm);
 profileAddButton.addEventListener('click', popupOpenAddCard);
+popupEditProfile.addEventListener('submit', formSubmitCard);
+
+newCards ()
