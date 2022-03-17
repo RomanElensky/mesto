@@ -1,7 +1,6 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelectorAll('.popup');
 const popupCloseButton = document.querySelectorAll('.popup__close-button');
-const formElement = document.querySelector('.popup__input-container');
 const inputName = document.querySelector('.popup__input_type_name');
 const inputInfo = document.querySelector('.popup__input_type_info');
 const profileName = document.querySelector('.profile__name');
@@ -98,9 +97,9 @@ function openImage(viewImage) {
     openPopup(popupOpenImage)
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
 profileEditButton.addEventListener('click', popupOpenEditForm);
 profileAddButton.addEventListener('click', popupOpenAddCard);
-popupEditProfile.addEventListener('submit', formSubmitCard);
+popupEditProfile.addEventListener('submit', formSubmitHandler);
+popupAddCard.addEventListener('submit', formSubmitCard);
 
 newCards ()

@@ -23,9 +23,7 @@
             </div>
             <button class="profile__add-button" type="button" aria-label="Добавить"></button>
           </section>
-          <section class="card">
-
-          </section>
+          <section class="card"></section>
         </main>
         <footer class="footer">
           <p class="footer__text">&copy; 2020 Mesto Russia</p>
@@ -49,21 +47,21 @@
           <form class="popup__input-container" name="form_edit-profile">
             <input type="text" placeholder="Название" class="popup__input popup__input_type_card" name="profile_name">
             <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link" name="profile_info">
-            <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+            <button class="popup__submit-button" type="submit" aria-label="Сохранить">Создать</button>
           </form>
         </div>
       </section>
       <section class="popup popup__type_open-image">
         <figure class="popup__image-container">
-          <button type="button" class="popup__close-button popup__close-button_type_open-image" aria-label="Закрыть"></button>
-          <img class="popup__image" src="" alt="">
+          <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+          <img class="popup__image" src="." alt=".">
           <figcaption class="popup__image-title"></figcaption>
         </figure>
       </section>
       <template class="card__template">
         <div class="card__element">
           <div class="card__image-container">
-            <img class="card__image" src="" alt="">
+            <img class="card__image">
             <button class="card__trash-button" type="button" aria-label="Удалить"></button>
           </div>
           <div class="card__description">
