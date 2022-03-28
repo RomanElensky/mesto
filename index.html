@@ -34,9 +34,17 @@
           <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__input-container" name="form_edit-profile">
-            <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="profile_name">
-            <input type="text" placeholder="Род деятельности" class="popup__input popup__input_type_info" name="profile_info">
-            <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+            <fieldset class="popup__fieldset">
+              <label class="popup__lable">
+                <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="profile_name" minlength="2" maxlength="40" required>
+                <span class="popup__error">Вы пропустили это поле.</span>
+              </label>
+              <label class="popup__lable">
+                <input type="text" placeholder="Род деятельности" class="popup__input popup__input_type_info" name="profile_info" minlength="2" maxlength="200" required>
+                <span class="popup__error">Вы пропустили это поле.</span>
+              </label>
+            <button class="popup__submit-button" type="submit" aria-label="Сохранить" disabled="true">Сохранить</button>
+          </fieldset>
           </form>
         </div>
       </section>
@@ -45,9 +53,17 @@
           <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
           <h3 class="popup__title">Новое место</h3>
           <form class="popup__input-container popup__input-container_type_card" name="form_edit-profile">
-            <input type="text" placeholder="Название" class="popup__input popup__input_type_card" name="profile_name">
-            <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link" name="profile_info">
-            <button class="popup__submit-button" type="submit" aria-label="Сохранить">Создать</button>
+            <fieldset class="popup__fieldset">
+              <label class="popup__lable">
+                <input type="text" placeholder="Название" class="popup__input popup__input_type_card" name="profile_name" minlength="2" maxlength="30" required>
+                <span class="popup__error">Вы пропустили это поле.</span>
+              </label>
+              <label class="popup__lable">
+                <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link" name="profile_info" required>
+                <span class="popup__error">Вы пропустили это поле.</span>
+              </label>
+            <button class="popup__submit-button" type="submit" aria-label="Сохранить" disabled="true">Создать</button>
+          </fieldset>
           </form>
         </div>
       </section>
@@ -70,6 +86,7 @@
           </div>
         </div>
       </template>
+    <script src="script/validate.js"></script>
     <script src="script/cards.js"></script>
     <script src="script/script.js"></script>
 </body>

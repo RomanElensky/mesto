@@ -21,10 +21,12 @@ const popupInputTypeCard = document.querySelector('.popup__input-container_type_
 // Open/Close popup
 function openPopup(popups) {
     popups.classList.add('popup_opened');
+    closePopupESCEvent();
 }
 
 function closePopup(popups) {
     popups.classList.remove('popup_opened');
+    closePopupESCRemoveEvent();
 }
 
 // popup Edit Form
@@ -97,6 +99,31 @@ function openImage(viewImage) {
     popupImage.alt = viewImage.alt
     popupImageTitle.textContent = viewImage.alt
     openPopup(popupOpenImage)
+}
+
+// Close popup overlay click
+popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup);
+        }
+    })
+})
+
+// Close popup "ESC" click
+function closePopupESC (evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
+
+function closePopupESCEvent() {
+    document.addEventListener('keydown', closePopupESC);
+}
+
+function closePopupESCRemoveEvent() {
+    document.removeEventListener('keydown', closePopupESC);
 }
 
 profileEditButton.addEventListener('click', openEditFormPopup);
