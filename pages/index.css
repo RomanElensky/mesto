@@ -37,3 +37,5 @@
 @import url(../blocks/popup/__error/popup__error.css);
 @import url(../blocks/popup/__fieldset/popup__fieldset.css);
 @import url(../blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css);
+@import url(../blocks/popup/__input/_error/popup__input_type_error.css);
+@import url(../blocks/popup/__input/_span-error/popup__input_type_span-error.css);
