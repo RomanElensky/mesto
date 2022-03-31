@@ -1,5 +1,6 @@
 .popup__input {
     width: 358px;
+    min-height: 30px;
     margin-bottom: 5px;
     font-family: "Inter", "Arial", sans-serif;
     font-style: normal;
@@ -9,7 +10,7 @@
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
-    padding: 0 0 13px;
+    padding: 0;
 }
 
 ::-webkit-input-placeholder {
