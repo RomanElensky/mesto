@@ -2,4 +2,9 @@
     background: white;
     color: #c4c4c4;
     border: 1px solid #c4c4c4;
+    cursor: auto;
+}
+
+.popup__submit-button_disabled:hover {
+    opacity: 100;
 }

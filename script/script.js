@@ -16,6 +16,7 @@ const popupImage = document.querySelector('.popup__image');
 const popupImageTitle = document.querySelector('.popup__image-title');
 const cardTemplate = document.querySelector('.card__template').content;
 const popupInputTypeCard = document.querySelector('.popup__input-container_type_card');
+const popupCardSubmitButton = document.querySelector('.popup__submit-button_type_card');
 
 
 // Open/Close popup
@@ -31,9 +32,9 @@ function closePopup(popups) {
 
 // popup Edit Form
 function openEditFormPopup() {
-    openPopup(popupEditProfile)
     inputName.value = profileName.textContent;
     inputInfo.value = profileDescription.textContent;
+    openPopup(popupEditProfile)
 }
 
 function handlerSubmitFormProfile(evt) {
@@ -53,6 +54,8 @@ function handlerFormSubmitCard(evt) {
     renderCard({ name: inputCard.value, link: inputLink.value });
     closePopup(popupAddCard);
     popupInputTypeCard.reset();
+    popupCardSubmitButton.setAttribute("disabled", true);
+    popupSubmitButton.classList.add("popup__submit-button_disabled");
 }
 
 popupCloseButtons.forEach(function(item) {
