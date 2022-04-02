@@ -55,7 +55,7 @@ function handlerFormSubmitCard(evt) {
     closePopup(popupAddCard);
     popupInputTypeCard.reset();
     popupCardSubmitButton.setAttribute("disabled", true);
-    popupSubmitButton.classList.add("popup__submit-button_disabled");
+    popupCardSubmitButton.classList.add("popup__submit-button_disabled");
 }
 
 popupCloseButtons.forEach(function(item) {
