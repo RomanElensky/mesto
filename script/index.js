@@ -1,3 +1,15 @@
+import { Card } from './Card';
+import { FormValidator } from './FormValidator.js';
+
+const validationList = {
+    formElement: '.popup__input-container',
+    inputElement: 'input.popup__input',
+    fieldsetElement: '.popup__fieldset',
+    buttonElemnt: 'popup__submit-button',
+    inputErrorElement: 'popup__input_type_error',
+    spanErrorElement: 'popup__input_type_span-error'
+}
+
 const profileEditButton = document.querySelector('.profile__edit-button');
 const popups = document.querySelectorAll('.popup');
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
@@ -17,6 +29,36 @@ const popupImageTitle = document.querySelector('.popup__image-title');
 const cardTemplate = document.querySelector('.card__template').content;
 const popupInputTypeCard = document.querySelector('.popup__input-container_type_card');
 const popupCardSubmitButton = document.querySelector('.popup__submit-button_type_card');
+
+const addCardValidation = new FormValidator(validationList, popupAddCard);
+const editProfileValidation = new FormValidator(validationList, popupEditProfile);
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
 
 
 // Open/Close popup
@@ -53,9 +95,6 @@ function handlerFormSubmitCard(evt) {
     evt.preventDefault();
     renderCard({ name: inputCard.value, link: inputLink.value });
     closePopup(popupAddCard);
-    popupInputTypeCard.reset();
-    popupCardSubmitButton.setAttribute("disabled", true);
-    popupCardSubmitButton.classList.add("popup__submit-button_disabled");
 }
 
 popupCloseButtons.forEach(function(item) {
@@ -70,34 +109,18 @@ function renderInitialCards () {
     initialCards.forEach(renderCard);
 }
 
-function createCard(item) {
-    const cardElement = cardTemplate.querySelector('.card__element').cloneNode(true);
-    const viewImage = cardElement.querySelector('.card__image');
-    cardElement.querySelector('.card__name').textContent = item.name;
-    viewImage.src = item.link;
-    viewImage.alt = item.name;
-
-    // Like function
-    cardElement.querySelector('.card__like').addEventListener('click', (evt) => {
-        evt.target.classList.toggle("card__like_clicked")});
-
-    // Remove cards function
-    cardElement.querySelector('.card__trash-button').addEventListener('click', (evt) => {
-        evt.target.closest('.card__element').remove()});
-        
-    // View image
-        viewImage.addEventListener('click', () => openImage(viewImage));
-
-    return cardElement;
+function createCard(cardInfo) {
+   const card = new Card(cardInfo, cardTemplate);
+   const cardElement = card.generateCard()
+   return cardElement;
 }
 
-function renderCard(item) {
-    const cardElement = createCard(item)
-    cardSection.prepend(cardElement);
+function renderCard(cardInfo) {
+    sectionCards.prepend(createCard(cardInfo));
 }
 
 // View images function
-function openImage(viewImage) {
+export function openImage(viewImage) {
     popupImage.src = viewImage.src
     popupImage.alt = viewImage.alt
     popupImageTitle.textContent = viewImage.alt
@@ -134,4 +157,8 @@ profileAddButton.addEventListener('click', openAddCardPopup);
 popupEditProfile.addEventListener('submit', handlerSubmitFormProfile);
 popupAddCard.addEventListener('submit', handlerFormSubmitCard);
 
-renderInitialCards ()
+initialCards.forEach(cardInfo => renderCard(cardInfo));
+
+editProfileValidation.enableValidation();
+
+addCardValidation.enableValidation();
