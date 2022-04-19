@@ -1,4 +1,4 @@
-import { Card } from './Card';
+import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
 const validationList = {
@@ -107,19 +107,19 @@ popupCloseButtons.forEach(function(item) {
 // Cards function
 function createCard(cardInfo) {
    const card = new Card(cardInfo, cardTemplate);
-   const cardElement = card.generateCard()
+   const cardElement = card.generateCard();
    return cardElement;
 }
 
 function renderCard(cardInfo) {
-    sectionCards.prepend(createCard(cardInfo));
+    cardSection.prepend(createCard(cardInfo));
 }
 
 // View images function
-export function openImage(viewImage) {
-    popupImage.src = viewImage.src
-    popupImage.alt = viewImage.alt
-    popupImageTitle.textContent = viewImage.alt
+export function openImage(imageLink, imageName) {
+    popupImage.src = imageLink
+    popupImage.alt = imageName
+    popupImage.textContent = imageName
     openPopup(popupOpenImage)
 }
 
