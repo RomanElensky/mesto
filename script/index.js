@@ -105,10 +105,6 @@ popupCloseButtons.forEach(function(item) {
 });
 
 // Cards function
-function renderInitialCards () {
-    initialCards.forEach(renderCard);
-}
-
 function createCard(cardInfo) {
    const card = new Card(cardInfo, cardTemplate);
    const cardElement = card.generateCard()
