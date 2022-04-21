@@ -149,8 +149,8 @@ function closePopupESCRemoveEvent() {
 
 profileEditButton.addEventListener('click', openEditFormPopup);
 profileAddButton.addEventListener('click', openAddCardPopup);
-popupEditProfile.addEventListener('submit', handlerSubmitFormProfile);
-popupAddCard.addEventListener('submit', handlerFormSubmitCard);
+popupContainerTypeForm.addEventListener('submit', handlerSubmitFormProfile);
+popupContainerTypeCard.addEventListener('submit', handlerFormSubmitCard);
 
 initialCards.forEach(cardInfo => renderCard(cardInfo));
 
