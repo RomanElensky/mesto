@@ -24,14 +24,15 @@ const popupAddCard = document.querySelector('.popup_type_card');
 const inputCard = document.querySelector('.popup__input_type_card');
 const inputLink = document.querySelector('.popup__input_type_link');
 const popupOpenImage = document.querySelector('.popup_type_image');
-const popupImage = document.querySelector('.popup__image');
-const popupImageTitle = document.querySelector('.popup__image-title');
+const popupImage = popupOpenImage.querySelector('.popup__image');
+const popupImageTitle = popupOpenImage.querySelector('.popup__image-title');
 const cardTemplate = document.querySelector('.card__template').content;
-const popupInputTypeCard = document.querySelector('.popup__input-container_type_card');
+const popupContainerTypeCard = popupAddCard.querySelector('.popup__input-container');
+const popupContainerTypeForm = popupEditProfile.querySelector('.popup__input-container');
 const popupCardSubmitButton = document.querySelector('.popup__submit-button_type_card');
 
-const addCardValidation = new FormValidator(validationList, popupAddCard);
-const editProfileValidation = new FormValidator(validationList, popupEditProfile);
+const addCardValidation = new FormValidator(validationList, popupContainerTypeCard);
+const editProfileValidation = new FormValidator(validationList, popupContainerTypeForm);
 
 const initialCards = [
     {
@@ -59,6 +60,13 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+export function openImage(imageLink, imageName) {
+    popupImage.src = imageLink
+    popupImage.alt = imageName
+    popupImage.textContent = imageName
+    openPopup(popupOpenImage)
+}
 
 // Open/Close popup
 function openPopup(popups) {
