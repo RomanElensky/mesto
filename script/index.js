@@ -83,6 +83,7 @@ function closePopup(popups) {
 function openEditFormPopup() {
     inputName.value = profileName.textContent;
     inputInfo.value = profileDescription.textContent;
+    editProfileValidation.resetValidation();
     openPopup(popupEditProfile)
 }
 
@@ -95,6 +96,7 @@ function handlerSubmitFormProfile(evt) {
 
 // popup Card Form
 function openAddCardPopup() {
+    addCardValidation.resetValidation();
     openPopup(popupAddCard)
 }
 
