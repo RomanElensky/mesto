@@ -1,4 +1,4 @@
-import { openImage } from './index.js';
+import { openImage } from './utils.js';
 
 export class Card {
     constructor(cardInfo, cardTemplate) {

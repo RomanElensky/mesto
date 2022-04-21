@@ -60,7 +60,6 @@ const initialCards = [
     }
 ];
 
-
 // Open/Close popup
 function openPopup(popups) {
     popups.classList.add('popup_opened');
@@ -113,14 +112,6 @@ function createCard(cardInfo) {
 
 function renderCard(cardInfo) {
     cardSection.prepend(createCard(cardInfo));
-}
-
-// View images function
-export function openImage(imageLink, imageName) {
-    popupImage.src = imageLink
-    popupImage.alt = imageName
-    popupImage.textContent = imageName
-    openPopup(popupOpenImage)
 }
 
 // Close popup overlay click
