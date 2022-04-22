@@ -1,41 +1,41 @@
 export class FormValidator {
-  constructor(formElement, formPopup) {
+  constructor(formItem, formPopup) {
     this._formPopup = formPopup;
-    this._errorClass = formElement.errorClass;
-    this._formSelector = formElement.formSelector;
-    this._inputSelector = formElement.inputSelector;
-    this._inactiveButtonClass = formElement.inactiveButtonClass;
-    this._buttonElemnt = formElement.buttonElemnt;
-    this._inputErrorClass = formElement.inputErrorClass;
+    this._formElement = formItem.formElement;
+    this._inputElement = formItem.inputElement;
+    this._buttonElemnt = formItem.buttonElemnt;
+    this._buttonElemntDisabled = formItem.buttonElemntDisabled;
+    this._inputErrorElement = formItem.inputErrorElement;
+    this._spanErrorElement = formItem.spanErrorElement;
     this._submitButtonElement = this._formPopup.querySelector(this._buttonElemnt)
-    this._inputFormActive = Array.from(this._formPopup.querySelectorAll(this._inputSelector));
+    this._inputFormActive = Array.from(this._formPopup.querySelectorAll(this._inputElement));
   }
 
-  _showInputError(inputElement) {
-    const errorElement = this._formPopup.querySelector(`.${inputElement.id}-error`);
+  _showInputError(inputItem) {
+    const errorElement = this._formPopup.querySelector(`.${inputItem.id}-error`);
     errorElement.textContent = '';
-    errorElement.classList.add(this._errorClass);
-    errorElement.textContent = inputElement.vvalidationMessage;
+    errorElement.classList.add(this._spanErrorElement);
+    errorElement.textContent = inputItem.validationMessage;
   }
 
-  _hideInputError = (inputElement) => {
-    const spanErrorElement = this._formPopup.querySelector(`.${inputElement.id}-error`);
-    spanErrorElement.classList.remove(this._errorClass);
+  _hideInputError = (inputItem) => {
+    const errorElement = this._formPopup.querySelector(`.${inputItem.id}-error`);
+    errorElement.classList.remove(this._spanErrorElement);
   };
 
   _activationButtonSave() {
     this._submitButtonElement.removeAttribute('disabled');
-    this._submitButtonElement.classList.remove(this._inactiveButtonClass);
+    this._submitButtonElement.classList.remove(this._buttonElemntDisabled);
   }
 
   _deactivateButtonSave() {
     this._submitButtonElement.setAttribute('disabled', true);
-    this._submitButtonElement.classList.add(this._inactiveButtonClass);
+    this._submitButtonElement.classList.add(this._buttonElemntDisabled);
   }
 
   _checkInput() {
-    return this._inputFormActive.some(inputElement => {
-      return !inputElement.validity.valid;
+    return this._inputFormActive.some(inputItem => {
+      return !inputItem.validity.valid;
     })
   }
 
@@ -48,34 +48,34 @@ export class FormValidator {
     }
   }
 
-  _checkInputValidity(inputElement) {
-    if (!inputElement.validity.valid) {
-      inputElement.classList.add(this._inputErrorClass);
-      this._showInputError(inputElement);
+  _checkInputValidity(inputItem) {
+    if (!inputItem.validity.valid) {
+      inputItem.classList.add(this._inputErrorElement);
+      this._showInputError(inputItem);
     } else {
-      inputElement.classList.remove(this._inputErrorClass);
-      this._hideInputError(inputElement);
+      inputItem.classList.remove(this._inputErrorElement);
+      this._hideInputError(inputItem);
     }
     this._toggleButtonState();
   }
   
-  _setEventListeners(inputElement) {
-    inputElement.addEventListener('input', () => {
-      this._checkInputValidity(inputElement);
+  _setEventListeners(inputItem) {
+    inputItem.addEventListener('input', () => {
+      this._checkInputValidity(inputItem);
     });
   }
 
   resetValidation() {
-    this._inputFormActive.forEach(inputElement => {
-      inputElement.classList.remove(this._inputErrorClass);
-      this._hideInputError(inputElement);
+    this._inputFormActive.forEach(inputItem => {
+      inputItem.classList.remove(this._inputErrorElement);
+      this._hideInputError(inputItem);
       this._toggleButtonState();
     });
   }
 
   enableValidation() {
-    this._inputFormActive.forEach(inputElement => {
-      this._setEventListeners(inputElement);
+    this._inputFormActive.forEach(inputItem => {
+      this._setEventListeners(inputItem);
     });
   }
 }
