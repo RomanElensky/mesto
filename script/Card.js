@@ -8,12 +8,8 @@ export class Card {
     }
 
     _getTemplate() {
-        const cardElement = document
-          .querySelector(this._cardTemplate)
-          .content
-          .querySelector('.card__element')
-          .cloneNode(true)
-        return cardElement
+      const cardElement = this._cardTemplate.querySelector('.card__element').cloneNode(true)
+      return cardElement
     }
 
     generateCard() {
