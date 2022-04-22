@@ -5,9 +5,9 @@ export class FormValidator {
     this._formSelector = formElement.formSelector;
     this._inputSelector = formElement.inputSelector;
     this._inactiveButtonClass = formElement.inactiveButtonClass;
-    this._submitButtonSelector = formElement.submitButtonSelector;
+    this._buttonElemnt = formElement.buttonElemnt;
     this._inputErrorClass = formElement.inputErrorClass;
-    this._buttonElement = this._formPopup.querySelector(this._submitButtonSelector)
+    this._submitButtonElement = this._formPopup.querySelector(this._buttonElemnt)
     this._inputFormActive = Array.from(this._formPopup.querySelectorAll(this._inputSelector));
   }
 
@@ -24,13 +24,13 @@ export class FormValidator {
   };
 
   _activationButtonSave() {
-    this._buttonElement.removeAttribute('disabled');
-    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._submitButtonElement.removeAttribute('disabled');
+    this._submitButtonElement.classList.remove(this._inactiveButtonClass);
   }
 
   _deactivateButtonSave() {
-    this._buttonElement.setAttribute('disabled', true);
-    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._submitButtonElement.setAttribute('disabled', true);
+    this._submitButtonElement.classList.add(this._inactiveButtonClass);
   }
 
   _checkInput() {
