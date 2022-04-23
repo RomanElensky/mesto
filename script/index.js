@@ -4,7 +4,7 @@ import { FormValidator } from './FormValidator.js';
 const validationList = {
     formElement: '.popup__input-container',
     inputElement: 'input.popup__input',
-    buttonElemnt: 'popup__submit-button',
+    buttonElemnt: '.popup__submit-button',
     buttonElemntDisabled: 'popup__submit-button_disabled',
     inputErrorElement: 'popup__input_type_error',
     spanErrorElement: 'popup__input_type_span-error'

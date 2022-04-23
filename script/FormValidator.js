@@ -7,7 +7,7 @@ export class FormValidator {
     this._buttonElemntDisabled = formItem.buttonElemntDisabled;
     this._inputErrorElement = formItem.inputErrorElement;
     this._spanErrorElement = formItem.spanErrorElement;
-    this._submitButtonElement = this._formPopup.querySelector(this._buttonElemnt)
+    this._submitButtonElement = this._formPopup.querySelector(this._buttonElemnt);
     this._inputFormActive = Array.from(this._formPopup.querySelectorAll(this._inputElement));
   }
 
@@ -18,10 +18,10 @@ export class FormValidator {
     errorElement.textContent = inputItem.validationMessage;
   }
 
-  _hideInputError = (inputItem) => {
+  _hideInputError(inputItem) {
     const errorElement = this._formPopup.querySelector(`.${inputItem.id}-error`);
     errorElement.classList.remove(this._spanErrorElement);
-  };
+  }
 
   _activationButtonSave() {
     this._submitButtonElement.removeAttribute('disabled');
