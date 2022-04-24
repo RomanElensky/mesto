@@ -21,7 +21,6 @@ export class FormValidator {
   _hideInputError(inputItem) {
     const errorElement = this._formPopup.querySelector(`.${inputItem.id}-error`);
     errorElement.classList.remove(this._spanErrorElement);
-    errorElement.textContent = inputItem.validationMessage;
   }
 
   _activationButtonSave() {

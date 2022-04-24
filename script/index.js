@@ -26,6 +26,9 @@ const inputLink = document.querySelector('.popup__input_type_link');
 const cardTemplate = document.querySelector('.card__template').content;
 const popupContainerTypeCard = popupAddCard.querySelector('.popup__input-container');
 const popupContainerTypeForm = popupEditProfile.querySelector('.popup__input-container');
+const popupOpenImage = document.querySelector('.popup_type_image');
+const popupImage = popupOpenImage.querySelector('.popup__image');
+const popupTitleImage = popupOpenImage.querySelector('.popup__image-title');
 
 const addCardValidation = new FormValidator(validationList, popupContainerTypeCard);
 const editProfileValidation = new FormValidator(validationList, popupContainerTypeForm);
@@ -81,6 +84,13 @@ function handlerSubmitFormProfile(evt) {
     profileName.textContent = inputName.value;
     profileDescription.textContent = inputInfo.value;
     closePopup(popupEditProfile)
+}
+
+ export function openImage(imageLink, imageName) {
+    popupImage.src = imageLink;
+    popupImage.alt = imageName;
+    popupTitleImage.textContent = imageName;
+    openPopup(popupOpenImage) 
 }
 
 // popup Card Form
