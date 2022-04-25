@@ -1,4 +1,4 @@
-import { openImage } from './index.js';
+import { openImage } from './utils.js';
 
 export class Card {
     constructor(cardInfo, cardTemplate) {
@@ -22,9 +22,13 @@ export class Card {
         return this._card;
     }
 
+    _removeEvent() {
+      this._card.remove();
+    }
+
     _setEventListeners() {
         this._card.querySelector('.card__trash-button').addEventListener('click', evt => {
-          this._card.remove();
+          this._removeEvent();
           this._element = null;
         });
         
