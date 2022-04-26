@@ -22,19 +22,23 @@ export class Card {
         return this._card;
     }
 
-    _removeEvent() {
+    removeCard() {
       this._card.remove();
     }
 
+    handleLikeClick() {
+      this._card.querySelector('.card__like').classList.toggle('card__like_clicked');
+    }
+
     _setEventListeners() {
-        this._card.querySelector('.card__trash-button').addEventListener('click', evt => {
-          this._removeEvent();
-          this._element = null;
+        this._card.querySelector('.card__trash-button').addEventListener('click', () => {
+          this.removeCard();
         });
-        
-        this._card.querySelector('.card__like').addEventListener('click', evt => {
-          evt.target.classList.toggle('card__like_clicked');
+
+        this._card.querySelector('.card__like').addEventListener('click', () => {
+          this.handleLikeClick();
         });
+
         this._cardImage.addEventListener('click', () => {
             openImage(this._link, this._name);
         })
