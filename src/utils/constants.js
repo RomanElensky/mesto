@@ -1,0 +1,9 @@
+export const profileEditButton = document.querySelector('.profile__edit-button');
+export const inputName = document.querySelector('.popup__input_type_name');
+export const inputInfo = document.querySelector('.popup__input_type_info');
+export const profileAddButton = document.querySelector('.profile__add-button');
+export const popupEditProfile = document.querySelector('.popup_type_edit');
+export const popupAddCard = document.querySelector('.popup_type_card');
+export const popupContainerTypeCard = popupAddCard.querySelector('.popup__input-container');
+export const popupContainerTypeForm = popupEditProfile.querySelector('.popup__input-container');
+export const submitButton = popupEditProfile.querySelector('.popup__submit-button');

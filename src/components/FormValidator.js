@@ -1,3 +1,5 @@
+import { submitButton } from "../utils/constants.js";
+
 export class FormValidator {
   constructor(formItem, formPopup) {
     this._formPopup = formPopup;
