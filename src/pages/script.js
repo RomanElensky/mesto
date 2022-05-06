@@ -1,6 +1,7 @@
+import './index.css'
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
-import { initialCards } from './initialCards.js';
+import { initialCards } from '../components/initialCards.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import Section from '../components/Section.js';
@@ -32,7 +33,7 @@ const userInfo = new UserInfo({nameSelector:'.profile__name',
   descriptionSelector:'.profile__description'});
 
 const popupWithForm = new PopupWithForm({ handleSubmit: (inputsValues) => {
-    const card = createCard(inputsValues.cardName, inputsValues.cardLink, '.card-template');
+    const card = createCard(inputsValues.cardName, inputsValues.cardLink, '.card__template');
     cardsList.addItem(card);
   }
 }, '.popup_type_card');
@@ -48,7 +49,7 @@ function createCard(cardName, cardLink, cardSelector) {
 }
 
 const cardsList = new Section({ items: initialCards, renderer: (item) => {
-      const card = createCard(item.name, item.link, '.card-template');
+      const card = createCard(item.name, item.link, '.card__template');
       cardsList.addItem(card);
     },
 }, '.card' );
@@ -81,15 +82,6 @@ profileAddButton.addEventListener('click', () => {
 popupWithImage.setEventListeners();
 popupWithForm.setEventListeners();
 popupProfile.setEventListeners();
-
-/*
-popups.forEach((popup) => {
-    popup.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popup);
-        }
-    })
-}) */
 
 
 editProfileValidation.enableValidation();

@@ -41,3 +41,4 @@
 @import url(../blocks/popup/__lable/popup__lable.css);
 @import url(../blocks/popup/_image/popup_type_image.css);
 @import url(../blocks/popup/__span/popup__span.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);
