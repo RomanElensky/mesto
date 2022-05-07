@@ -1,5 +1,3 @@
-import { submitButton } from "../utils/constants.js";
-
 export class FormValidator {
   constructor(formItem, formPopup) {
     this._formPopup = formPopup;
@@ -72,8 +70,8 @@ export class FormValidator {
     this._inputFormActive.forEach(inputItem => {
       inputItem.classList.remove(this._inputErrorElement);
       this._hideInputError(inputItem);
-      this._toggleButtonState();
     });
+    this._toggleButtonState();
   }
 
   enableValidation() {

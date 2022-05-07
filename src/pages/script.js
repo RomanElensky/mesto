@@ -13,7 +13,7 @@ import { profileEditButton,
     popupEditProfile,
     popupAddCard,
     popupContainerTypeCard,
-    popupContainerTypeForm} from "../utils/constants.js"
+    popupContainerTypeForm } from "../utils/constants.js"
 
 const validationList = {
     formElement: '.popup__input-container',
@@ -32,7 +32,7 @@ const popupWithImage = new PopupWithImage('.popup_type_image');
 const userInfo = new UserInfo({nameSelector:'.profile__name',
   descriptionSelector:'.profile__description'});
 
-const popupWithForm = new PopupWithForm({ handleSubmit: (inputsValues) => {
+const popupTypeCard = new PopupWithForm({ handleSubmit: (inputsValues) => {
     const card = createCard(inputsValues.cardName, inputsValues.cardLink, '.card__template');
     cardsList.addItem(card);
   }
@@ -76,11 +76,11 @@ profileEditButton.addEventListener('click', () => {
 
 // popup Card Form
 profileAddButton.addEventListener('click', () => {
-    popupWithForm.open();
+  popupTypeCard.open();
 });
 
 popupWithImage.setEventListeners();
-popupWithForm.setEventListeners();
+popupTypeCard.setEventListeners();
 popupProfile.setEventListeners();
 
 
