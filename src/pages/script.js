@@ -33,15 +33,15 @@ const userInfo = new UserInfo({nameSelector:'.profile__name',
   descriptionSelector:'.profile__description'});
 
 const popupTypeCard = new PopupWithForm({ handleSubmit: (inputsValues) => {
-    const card = createCard(inputsValues.cardName, inputsValues.cardLink, '.card__template');
+    const card = createCard(inputsValues.card_name, inputsValues.card_info, '.card__template');
     cardsList.addItem(card);
   }
 }, '.popup_type_card');
 
 // Cards function
-function createCard(cardName, cardLink, cardSelector) {
-    const card = new Card({ name:cardName, link:cardLink, handleCardClick: () => {
-          popupWithImage.open(cardName, cardLink)
+function createCard(card_name, card_info, cardSelector) {
+    const card = new Card({ name:card_name, link:card_info, handleCardClick: () => {
+          popupWithImage.open(card_name, card_info)
         },
       },  cardSelector);
     const cardElement = card.generateCard();
@@ -60,8 +60,8 @@ cardsList.renderItems();
 const popupProfile = new PopupWithForm({
     handleSubmit:(inputsValues) => {
       userInfo.setUserInfo({
-        name: inputsValues.profileName,
-        description: inputsValues.profileDescription
+        name: inputsValues.profile_name,
+        description: inputsValues.profile_info
       })
 }}, '.popup_type_edit');
 
