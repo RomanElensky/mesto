@@ -61,6 +61,10 @@ export class FormValidator {
   }
   
   _setEventListeners(inputItem) {
+    this._formPopup.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+
     inputItem.addEventListener('input', () => {
       this._checkInputValidity(inputItem);
     });
