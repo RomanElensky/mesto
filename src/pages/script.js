@@ -18,7 +18,8 @@ import { profileEditButton,
     submitCardButton,
     myToken,
     groupId,
-    popupContainerTypeAvatar } from "../utils/constants.js"
+    popupContainerTypeAvatar,
+    submitAvatarButton } from "../utils/constants.js"
 
 const validationList = {
     formElement: '.popup__input-container',
@@ -98,9 +99,9 @@ Promise.all([api.getInfo(), api.getCards()])
       link: cardInfo.card_info   
      })
      .then((res) => {
-      const card = createCard(res.card_name, res.card_info, '.card__template', userData, userData, res.likes, res._id);
+      const card = createCard(res.name, res.link, '.card__template', userData, userData, res.likes, res._id);
       cardsList.addItem(card);
-      popupAddingCard.close() 
+      popupTypeCard.close()
     })
     .catch((err) => {
       console.log(err);
@@ -112,6 +113,11 @@ Promise.all([api.getInfo(), api.getCards()])
   addCard(inputsValues)
  }
   }, '.popup_type_card');
+
+  profileAddButton.addEventListener('click', () => {
+    addCardValidation.resetValidation();
+    popupTypeCard.open();
+  });
 
   profileAddButton.addEventListener('click', () => {
     addCardValidation.resetValidation();
@@ -157,15 +163,10 @@ profileEditButton.addEventListener('click', () => {
     popupProfile.open();
 })
 
-// popup Card Form
-profileAddButton.addEventListener('click', () => {
-  popupTypeCard.open();
-});
-
 // popup Avatar
 const popupAvatar = new PopupWithForm({
   handleSubmit:(inputsValues) => {
-    buttonSubmitAvatar.textContent = 'Сохранение...';
+    submitAvatarButton.textContent = 'Сохранение...';
     function changeAvatar() {
       api.patchAvatar(inputsValues)
       .then((res) => {
@@ -176,7 +177,7 @@ const popupAvatar = new PopupWithForm({
         console.log(err);
       })
       .finally(() => {
-        buttonSubmitAvatar.textContent = 'Сохранить';
+        submitAvatarButton.textContent = 'Сохранить';
       })
     }
     changeAvatar(inputsValues)

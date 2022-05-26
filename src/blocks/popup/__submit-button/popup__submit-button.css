@@ -11,7 +11,7 @@
     height: 50px;
     border: none;
     padding: 0;
-    margin: 0 0 37px;
+    margin-top: 48px;
     border-radius: 2px;
     cursor: pointer;
 }
@@ -24,7 +24,7 @@
     .popup__submit-button {
         width: 238px;
         height: 46px;
-        margin: 0 0 25px;
+        margin-top: 45px;
         font-size: 14px;
         line-height: 17px;
     }

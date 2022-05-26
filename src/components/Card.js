@@ -23,7 +23,7 @@ export class Card {
     const cardImage = this._card.querySelector('.card__image');
     const cardName = this._card.querySelector('.card__name');
     this._cardLike = this._card.querySelector('.card__like');
-    this._cardLikes = this._card.querySelector('.element__like-amount');
+    this._cardLikes = this._card.querySelector('.card__like-amount');
     cardImage.src = this._image;
     cardImage.alt = this._name;
     cardName.textContent = this._name;
@@ -37,7 +37,7 @@ export class Card {
   }
 
   _defaultLikes() {
-    this._cardLikes.textContent = this._likes.length;
+    this._cardLikes.textContent = this._likes.length
     if (this._likes.some((likes) => likes._id === this._myData._id)) {
         this._cardLike.classList.add('card__like_clicked');
     }

@@ -1,3 +1,5 @@
+import { submitProfileButton } from "../utils/constants.js";
+
 export class FormValidator {
   constructor(formItem, formPopup) {
     this._formPopup = formPopup;
@@ -7,71 +9,71 @@ export class FormValidator {
     this._buttonElemntDisabled = formItem.buttonElemntDisabled;
     this._inputErrorElement = formItem.inputErrorElement;
     this._spanErrorElement = formItem.spanErrorElement;
-    this._submitButtonElement = this._formPopup.querySelector(this._buttonElemnt);
-    this._inputFormActive = Array.from(this._formPopup.querySelectorAll(this._inputElement));
   }
 
-  _showInputError(inputItem) {
+  _showInputError(inputItem, errorMessage) {
     const errorElement = this._formPopup.querySelector(`.${inputItem.id}-error`);
-    errorElement.textContent = '';
+    errorElement.textContent = errorMessage;
     errorElement.classList.add(this._spanErrorElement);
-    errorElement.textContent = inputItem.validationMessage;
+    inputItem.classList.add(this._inputErrorElement);
   }
 
-  _hideInputError(inputItem) {
+  _hideInputError = (inputItem) => {
     const errorElement = this._formPopup.querySelector(`.${inputItem.id}-error`);
     errorElement.classList.remove(this._spanErrorElement);
     errorElement.textContent = '';
+    inputItem.classList.remove(this._inputErrorElement);
   }
 
-  _activationButtonSave() {
-    this._submitButtonElement.removeAttribute('disabled');
-    this._submitButtonElement.classList.remove(this._buttonElemntDisabled);
-  }
-
-  _deactivateButtonSave() {
-    this._submitButtonElement.setAttribute('disabled', true);
-    this._submitButtonElement.classList.add(this._buttonElemntDisabled);
+  deactivateButtonSave() {
+    submitProfileButton.setAttribute('disabled', true);
+    submitProfileButton.classList.add(this._buttonElemntDisabled);
   }
 
   _checkInput() {
-    return this._inputFormActive.some(inputItem => {
+    return this.inputFormActive.some(inputItem => {
       return !inputItem.validity.valid;
     })
   }
 
-  _toggleButtonState() {
-    const formValid = this._checkInput();
-    if (!formValid) {
-      this._activationButtonSave();
-    } else {
-      this._deactivateButtonSave();
+  toggleButtonState() {
+    if (this._checkInput()) {
+      this.submitButtonElement.classList.add(this._buttonElemntDisabled);
+      this.submitButtonElement.disabled = true;
+      this.deactivateButtonSave();
     }
-  }
+    else {
+      this.submitButtonElement.classList.remove(this._buttonElemntDisabled);
+      this.submitButtonElement.disabled = false;
+    }
+    }
 
   _checkInputValidity(inputItem) {
     if (!inputItem.validity.valid) {
-      inputItem.classList.add(this._inputErrorElement);
-      this._showInputError(inputItem);
+      this._showInputError(inputItem, inputItem.validationMessage);
     } else {
-      inputItem.classList.remove(this._inputErrorElement);
       this._hideInputError(inputItem);
     }
-    this._toggleButtonState();
   }
   
-  _setEventListeners(inputItem) {
-    inputItem.addEventListener('input', () => {
-      this._checkInputValidity(inputItem);
-    });
+  _setEventListeners() {
+    this.submitButtonElement = this._formPopup.querySelector(this._buttonElemnt);
+    this.inputFormActive = Array.from(this._formPopup.querySelectorAll(this._inputElement));
+    this.toggleButtonState();
+
+    this.inputFormActive.forEach((inputItem) => {
+      inputItem.addEventListener('input', () => {
+        this._checkInputValidity(inputItem);
+        this.toggleButtonState();
+      })
+    })
   }
 
   resetValidation() {
-    this._inputFormActive.forEach(inputItem => {
-      inputItem.classList.remove(this._inputErrorElement);
+    this.inputFormActive.forEach(inputItem => {
       this._hideInputError(inputItem);
     });
-    this._toggleButtonState();
+    this.toggleButtonState();
   }
 
   enableValidation() {
@@ -79,8 +81,6 @@ export class FormValidator {
       evt.preventDefault();
     });
     
-    this._inputFormActive.forEach(inputItem => {
-      this._setEventListeners(inputItem);
-    });
+    this._setEventListeners();
   }
 }

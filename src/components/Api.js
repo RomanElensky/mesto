@@ -27,14 +27,14 @@ export default class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: avatarInfo.form_avatar
+                avatar: avatarInfo.avatar_link
             })
         }))
     }
 
     getCards() {
         return this._sendRequest(
-            fetch(`https://mesto.nomoreparties.co/v1/${this._cohortId}/cards`, {
+            fetch(`https://mesto.nomoreparties.co/v1/${this._userID}/cards`, {
             method: 'GET',
             headers: this._headers
         }))
@@ -45,8 +45,8 @@ export default class Api {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                name: cardInfo.card_name,
-                link: cardInfo.card_info
+                name: cardInfo.name,
+                link: cardInfo.link
             })
         }))
     }
