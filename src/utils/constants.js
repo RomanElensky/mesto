@@ -12,7 +12,7 @@ export const profileImage = document.querySelector('.profile__image');
 export const editAvatarButton = document.querySelector('.profile__edit-image');
 export const popupDeleteCard = document.querySelector('.popup_type_delete');
 export const popupEditAvatar = document.querySelector('.popup_type_avatar');
-export const submitAvatarButton = popupEditAvatar.querySelector('.form__submit-button');
+export const submitAvatarButton = popupEditAvatar.querySelector('.popup__submit-button');
 export const popupContainerTypeAvatar = popupEditAvatar.querySelector('.popup__input-container');
 
 export const myToken = 'c34b6ff3-3b58-4b83-9a26-376e4318434a';
