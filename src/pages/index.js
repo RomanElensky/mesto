@@ -55,18 +55,18 @@ function createCard(card_name, card_info, cardSelector, cardOwner, myData, cardL
     },
     handleLikeClick: (id, likesObject) => {
       if (likesObject.some((likes) => likes._id === myData._id)) {
-        api.deleteLike(groupId, id)
+        api.deleteLike(id)
           .then(res => {
             card.unlikeCard(res)
           })
           .catch(err => console.log(`Ошибка: ${err}`))
       }
       else {
-        api.addlike(groupId, id)
+        api.addlike(id)
           .then(res => {
             card.likeCard(res)
           })
-          /*.catch(err => console.log(`Ошибка: ${err}`))*/
+          .catch(err => console.log(`Ошибка: ${err}`))
       }
     }
   }, cardSelector, cardOwner, myData, cardLikes, cardId);
