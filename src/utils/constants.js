@@ -17,3 +17,12 @@ export const popupContainerTypeAvatar = popupEditAvatar.querySelector('.popup__i
 
 export const myToken = 'c34b6ff3-3b58-4b83-9a26-376e4318434a';
 export const groupId = 'cohort-41';
+
+export const validationList = {
+    formElement: '.popup__input-container',
+    inputElement: 'input.popup__input',
+    buttonElemnt: '.popup__submit-button',
+    buttonElemntDisabled: 'popup__submit-button_disabled',
+    inputErrorElement: 'popup__input_type_error',
+    spanErrorElement: 'popup__input_type_span-error'
+}

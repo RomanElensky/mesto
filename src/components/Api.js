@@ -1,88 +1,91 @@
 export default class Api {
-    constructor(headers, userID) {
+    constructor({ headers, baseUrl }) {
         this._headers = headers;
-        this._userID = userID;
+        this._baseUrl = baseUrl;
     }
 
     getInfo() {
-        return this._sendRequest(fetch(`https://nomoreparties.co/v1/${this._userID}/users/me`, {
+        return fetch(`${this._baseUrl}/users/me`, {
             method: 'GET',
             headers: this._headers
-        }));
+        })
+        .then(this._sendRequest)
     }
 
     patchInfo(info) {
-        return this._sendRequest(fetch(`https://mesto.nomoreparties.co/v1/${this._userID}/users/me`, {
+        return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
                 name: info.profile_name,
                 about: info.profile_info
             })
-        }))
+        })
+        .then(this._sendRequest)
     }
 
     patchAvatar(avatarInfo) {
-        return this._sendRequest(fetch(`https://mesto.nomoreparties.co/v1/${this._userID}/users/me/avatar`, {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
                 avatar: avatarInfo.avatar_link
             })
-        }))
+        })
+        .then(this._sendRequest)
     }
 
     getCards() {
-        return this._sendRequest(
-            fetch(`https://mesto.nomoreparties.co/v1/${this._userID}/cards`, {
+        return fetch(`${this._baseUrl}/cards`, {
             method: 'GET',
             headers: this._headers
-        }))
+        })
+        .then(this._sendRequest)
     }
 
     postCard(cardInfo) {
-        return this._sendRequest(fetch(`https://mesto.nomoreparties.co/v1/${this._userID}/cards`, {
+        return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
                 name: cardInfo.name,
                 link: cardInfo.link
             })
-        }))
+        })
+        .then(this._sendRequest)
     }
 
     deleteCard(id) {
-        return this._sendRequest(fetch(`https://mesto.nomoreparties.co/v1/${this._userID}/cards/${id}`, {
+        return fetch(`${this._baseUrl}/cards/${id}`, {
             method: 'DELETE',
             headers: this._headers
-        }))
+        })
+        .then(this._sendRequest)
     }
 
-    likeCard(groupId, id) {
-        return this._sendRequest(fetch(`https://mesto.nomoreparties.co/v1/${groupId}/cards/${id}/likes`, {
+    addlike(id) {
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
             method: 'PUT',
             headers: this._headers
-        }))
+        })
+        .then(this._sendRequest)
     }
 
-    unlikeCard(groupId, id) {
-        return this._sendRequest(fetch(`https://mesto.nomoreparties.co/v1/${groupId}/cards/${id}/likes`, {
+    deleteLike(id) {
+        return fetch(`${this._baseUrl}/cards/${id}/likes`, {
             method: 'DELETE',
             headers: this._headers
-        }))
+        })
+        .then(this._sendRequest)
     }
 
 
-    _sendRequest(promise) {
-        return promise
-            .then((res) => {
-                if (res.ok){
-                    return res.json()
-                }
-                Promise.reject(`Ошибка ${res.status}`);
-            })
-            .then((res) => {
-                return res
-            })
+    _sendRequest(res) {
+        if (res.ok) {
+            return res.json()
+        }
+        else {
+            Promise.reject(`Ошибка ${res.status}`);
+        }
     }
 }

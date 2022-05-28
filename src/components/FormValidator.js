@@ -1,5 +1,3 @@
-import { submitProfileButton } from "../utils/constants.js";
-
 export class FormValidator {
   constructor(formItem, formPopup) {
     this._formPopup = formPopup;
@@ -25,13 +23,18 @@ export class FormValidator {
     errorElement.textContent = '';
   }
 
+  _activationButtonSave() {
+    this.submitButtonElement.removeAttribute('disabled');
+    this.submitButtonElement.classList.remove(this._buttonElemntDisabled);
+  }
+
   deactivateButtonSave() {
-    submitProfileButton.setAttribute('disabled', true);
-    submitProfileButton.classList.add(this._buttonElemntDisabled);
+    this.submitButtonElement.setAttribute('disabled', true);
+    this.submitButtonElement.classList.add(this._buttonElemntDisabled);
   }
 
   _checkInput() {
-    return this.inputFormActive.some(inputItem => {
+    return this.inputList.some(inputItem => {
       return !inputItem.validity.valid;
     })
   }
@@ -40,7 +43,6 @@ export class FormValidator {
     if (this._checkInput()) {
       this.submitButtonElement.classList.add(this._buttonElemntDisabled);
       this.submitButtonElement.disabled = true;
-      this.deactivateButtonSave();
     }
     else {
       this.submitButtonElement.classList.remove(this._buttonElemntDisabled);
@@ -58,10 +60,10 @@ export class FormValidator {
   
   _setEventListeners() {
     this.submitButtonElement = this._formPopup.querySelector(this._buttonElemnt);
-    this.inputFormActive = Array.from(this._formPopup.querySelectorAll(this._inputElement));
+    this.inputList = Array.from(this._formPopup.querySelectorAll(this._inputElement));
     this.toggleButtonState();
 
-    this.inputFormActive.forEach((inputItem) => {
+    this.inputList.forEach((inputItem) => {
       inputItem.addEventListener('input', () => {
         this._checkInputValidity(inputItem);
         this.toggleButtonState();
@@ -70,7 +72,7 @@ export class FormValidator {
   }
 
   resetValidation() {
-    this.inputFormActive.forEach(inputItem => {
+    this.inputList.forEach(inputItem => {
       this._hideInputError(inputItem);
     });
     this.toggleButtonState();
