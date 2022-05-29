@@ -17,7 +17,6 @@ import {
   editAvatarButton,
   submitProfileButton,
   submitCardButton,
-  groupId,
   popupContainerTypeAvatar,
   submitAvatarButton,
   validationList

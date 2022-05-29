@@ -41,19 +41,19 @@ export class Card {
     this._cardLikes.textContent = this._likes.length
     if (this._likes.some((likes) => likes._id === this._myData._id)) {
       this._cardLike.classList.add('card__like_clicked');
-    } else {
-      this._cardLike.classList.remove('card__like_clicked');
-    }
+    } 
   }
 
-  likeCard() {
+  likeCard(cardInfo) {
     this._cardLike.classList.add('card__like_clicked');
-    this._cardLikes.textContent = this._likes.length;
+    this._cardLikes.textContent = cardInfo.likes.length;
+    this._likes = cardInfo.likes;
   }
 
-  unlikeCard() {
+  unlikeCard(cardInfo) {
     this._cardLike.classList.remove('card__like_clicked');
-    this._cardLikes.textContent = this._likes.length;
+    this._cardLikes.textContent = cardInfo.likes.length;
+    this._likes = cardInfo.likes;
   }
 
   _setEventListeners() {
