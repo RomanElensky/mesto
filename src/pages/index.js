@@ -42,10 +42,10 @@ const api = new Api({
 })
 
 // Cards function
-function createCard(card_name, card_info, cardSelector, cardOwner, myData, cardLikes, cardId) {
+function createCard(cardName, cardInfo, cardSelector, cardOwner, myData, cardLikes, cardId) {
   const card = new Card({
-    name: card_name, link: card_info, handleCardClick: () => {
-      popupWithImage.open(card_name, card_info)
+    name: cardName, link: cardInfo, handleCardClick: () => {
+      popupWithImage.open(cardName, cardInfo)
     },
     handleDeleteClick: (id) => {
       popupDeleteCard.cardId(id, cardElement);
